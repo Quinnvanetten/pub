@@ -142,34 +142,18 @@
 
 
         // .mbr-parallax-background
-        if ($.fn.jarallax && !$.isMobile()) {
-            $(document).on('destroy.parallax', function(event) {
+        if ($.fn.jarallax && !$.isMobile()){
+            $(document).on('destroy.parallax', function(event){
                 $(event.target).outerFind('.mbr-parallax-background')
                     .jarallax('destroy')
                     .css('position', '');
             });
-            $(document).on('add.cards change.cards', function(event) {
+            $(document).on('add.cards change.cards', function(event){
                 $(event.target).outerFind('.mbr-parallax-background')
                     .jarallax({
                         speed: 0.6
                     })
                     .css('position', 'relative');
-            });
-
-            if ($('html').hasClass('is-builder')) {
-                $(document).on('add.cards', function(event) {
-                    setTimeout(function() {
-                        $(window).trigger('update.parallax');
-                    }, 0);
-                });
-            }
-
-            $(window).on('update.parallax', function(event) {
-                var $jarallax = $('.mbr-parallax-background');
-
-                $jarallax.jarallax('coverImage');
-                $jarallax.jarallax('clipContainer');
-                $jarallax.jarallax('onScroll');
             });
         }
 
@@ -396,8 +380,8 @@
             } else if ($('input[name=animation]').length) {
                 $('input[name=animation]').remove();
 
-                var $animatedElements = $('p, h1, h2, h3, h4, h5, a, button, small, img, li, blockquote, .mbr-author-name, em, label, input, textarea, .input-group, .iconbox, .btn-social, .mbr-figure, .mbr-map, .mbr-testimonial .card-block, .mbr-price-value, .mbr-price-figure, .dataTable, .dataTables_info').not(function() {
-                    return $(this).parents().is('.navbar, .mbr-arrow, footer, .iconbox, .mbr-slider, .mbr-gallery, .mbr-testimonial .card-block, #cookiesdirective, .mbr-wowslider, .accordion, .tab-content, .engine, .extFooter1, #scrollToTop');
+                var $animatedElements = $('p, h1, h2, h3, h4, h5, a, button, small, img, li, blockquote, .mbr-author-name, em, label, input, textarea, .input-group, .iconbox, .btn-social, .mbr-figure, .mbr-gallery, .mbr-slider, .mbr-map, .mbr-testimonial .card-block, .mbr-price-value, .mbr-price-figure').not(function() {
+                    return $(this).parents().is('.navbar, .mbr-arrow, footer, .iconbox, .mbr-slider, .mbr-gallery, .mbr-testimonial .card-block, #cookiesdirective, .mbr-wowslider, .accordion, .tab-content, .engine');
                 }).addClass('hidden animated');
 
                 function getElementOffset(element) {
@@ -456,7 +440,7 @@
         var $scroller = $('#scrollToTop'),
             $main = $('body,html'),
             $window = $(window);
-        $scroller.css('display', 'none');
+        $scroller.css('display', 'none');    
         $window.scroll(function () {
         if ($(this).scrollTop() > 0) {
             $scroller.fadeIn();
@@ -469,11 +453,11 @@
                 scrollTop: 0
             }, 400);
             return false;
-        });
+        });        
     }
     });
 
-    //Fix menu only for the Opera Mini
+    //Fix menu for the Opera Mini
     var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1);
     if(isOperaMini){
         $('.hamburger-icon').css({'width':'30px', 'height':'3px', 'background-color':'#ffffff', 'box-shadow':'none', 'position':'relative'}).addClass('hamburger-om');
@@ -488,7 +472,7 @@
         var e = document.createElement("section");
         e.id = "top-1";
         e.className = "engine";
-        e.innerHTML = '<a href="https://mobirise.com">mobirise.com</a> Mobirise v3.9.2';
+        e.innerHTML = '<a href="https://mobirise.com">mobirise.com</a> Mobirise v3.8.3';
         document.body.insertBefore(e, document.body.childNodes[0]);
     }
 }();
